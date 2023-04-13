@@ -33,9 +33,13 @@ try:
             stats[key] += 1
         total += size
         count += 1
+
         if count == 10:
             count = 0
             print_stats(stats, total)
-except KeyboardInterrupt:
+
+except Exception as err:
+    pass
+
+finally:
     print_stats(stats, total)
-    raise
