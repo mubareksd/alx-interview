@@ -22,7 +22,7 @@ def print_stats(stats, total):
     print("File size: {}".format(total))
     for key, value in sorted(stats.items()):
         if value > 0:
-            print(f"{key}: {value}")
+            print("{}: {}".format(key, value))
 
 
 if __name__ == "__main__":
