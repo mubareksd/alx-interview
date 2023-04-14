@@ -28,20 +28,19 @@ def print_stats(stats, total):
 if __name__ == "__main__":
     try:
         for line in sys.stdin:
-            data = line.split()
-            try:
-                size = int(data[-1])
-                status = int(data[-2])
-            except:
-                pass
-            if status in stats.keys():
-                stats[status] += 1
-            total += size
             count += 1
-            if count == 10:
+            size = 0
+            try:
+                data = line.split()
+                status = data[-2]
+                size += int(data[-1])
+                if status in stats:
+                    stats[status] += 1
+            except Exception:
+                pass
+            total += size
+            if count % 10 == 0:
                 print_stats(stats, total)
-                count = 0
-        print_stats(stats, total)
     except KeyboardInterrupt:
         print_stats(stats, total)
         raise
