@@ -25,11 +25,12 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             data = line.split()
-            status = data[-2]
-            if status in stats.keys():
-                stats[status] += 1
-            total += int(data[-1])
-            count += 1
+            if len(data) > 4:
+                status = data[-2]
+                if status in stats.keys():
+                    stats[status] += 1
+                total += int(data[-1])
+                count += 1
             if count == 10:
                 count = 0
                 print_stats(stats, total)
