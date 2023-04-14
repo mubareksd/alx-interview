@@ -25,21 +25,23 @@ def print_stats(stats, total):
             print(f"{key}: {value}")
 
 
-try:
-    for line in sys.stdin:
-        ls = line.split()
-        key, size = ls[-2], int(ls[-1])
-        if key in stats.keys():
-            stats[key] += 1
-        total += size
-        count += 1
-
-        if count == 10:
-            count = 0
-            print_stats(stats, total)
-
-except Exception as err:
-    pass
-
-finally:
-    print_stats(stats, total)
+if __name__ == "__main__":
+    try:
+        for line in sys.stdin:
+            data = line.split()
+            try:
+                size = int(data[-1])
+                status = int(data[-2])
+            except:
+                pass
+            if status in stats.keys():
+                stats[status] += 1
+            total += size
+            count += 1
+            if count == 10:
+                print_stats(stats, total)
+                count = 0
+        print_stats(stats, total)
+    except KeyboardInterrupt:
+        print_stats(stats, total)
+        raise
