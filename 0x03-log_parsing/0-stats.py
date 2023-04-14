@@ -5,14 +5,14 @@ import sys
 
 
 stats = {
-        '200': 0, '301': 0, '400': 0, '401': 0,
-        '403': 0, '404': 0, '405': 0, '500': 0
-        }
+    '200': 0, '301': 0, '400': 0, '401': 0,
+    '403': 0, '404': 0, '405': 0, '500': 0
+}
 total = 0
 count = 0
 
 
-def print_stats():
+def print_stats(stats, total):
     """print_stats function
     """
     print("File size: {}".format(total))
@@ -23,18 +23,17 @@ def print_stats():
 
 if __name__ == "__main__":
     try:
-        for line in sys.stdin: 
+        for line in sys.stdin:
             data = line.split()
             status = data[-2]
-            size = int(data[-1])
             if status in stats.keys():
                 stats[status] += 1
-            total += size
+            total += int(data[-1])
             count += 1
             if count == 10:
-                # print_stats()
                 count = 0
-    except KeyboardInterrupt:
-        print_stats()
-        raise
-    print_stats()
+                print_stats(stats, total)
+    except Exception:
+        pass
+    finally:
+        print_stats(stats, total)
