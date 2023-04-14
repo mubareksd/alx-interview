@@ -23,7 +23,7 @@ def print_stats():
 
 if __name__ == "__main__":
     try:
-        for line in sys.stdin:
+        for line in sys.stdin: 
             data = line.split()
             status = data[-2]
             size = int(data[-1])
@@ -32,8 +32,9 @@ if __name__ == "__main__":
             total += size
             count += 1
             if count == 10:
-                print_stats()
+                # print_stats()
                 count = 0
     except KeyboardInterrupt:
         print_stats()
         raise
+    print_stats()
