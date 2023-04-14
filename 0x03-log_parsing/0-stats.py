@@ -13,17 +13,24 @@ count = 0
 
 
 if __name__ == "__main__":
-    for line in sys.stdin:
-        data = line.split()
-        status = data[-2]
-        size = int(data[-1])
-        if status in stats.keys():
-            stats[status] += 1
-        total += size
-        count += 1
-        if count == 10:
-            print("File size: {}".format(total))
-            for key, value in sorted(stats.items()):
-                if value != 0:
-                    print("{}: {}".format(key, value))
-            count = 0
+    try:
+        for line in sys.stdin:
+            data = line.split()
+            status = data[-2]
+            size = int(data[-1])
+            if status in stats.keys():
+                stats[status] += 1
+            total += size
+            count += 1
+            if count == 10:
+                print("File size: {}".format(total))
+                for key, value in sorted(stats.items()):
+                    if value != 0:
+                        print("{}: {}".format(key, value))
+                count = 0
+    except KeyboardInterrupt:
+        print("File size: {}".format(total))
+        for key, value in sorted(stats.items()):
+            if value != 0:
+                print("{}: {}".format(key, value))
+        raise
