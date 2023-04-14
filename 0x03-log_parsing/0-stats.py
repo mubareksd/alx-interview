@@ -12,7 +12,7 @@ total = 0
 count = 0
 
 
-def print_stats(stats, total):
+def print_stats():
     """print_stats function
 
     Args:
@@ -40,8 +40,8 @@ if __name__ == "__main__":
             total += size
             count += 1
             if count == 10:
-                print_stats(stats, total)
+                print_stats()
                 count = 0
     except KeyboardInterrupt:
-        print_stats(stats, total)
+        print_stats()
         raise
