@@ -19,16 +19,15 @@ def print_stats(stats, total):
         stats (dict): stats
         total (int): total
     """
-    print(f"File size: {total}")
+    print("File size: {}".format(total))
     for key, value in sorted(stats.items()):
-        if value:
+        if value > 0:
             print(f"{key}: {value}")
 
 
 if __name__ == "__main__":
     try:
         for line in sys.stdin:
-            count += 1
             size = 0
             try:
                 data = line.split()
@@ -39,8 +38,10 @@ if __name__ == "__main__":
             except Exception:
                 pass
             total += size
-            if count % 10 == 0:
+            count += 1
+            if count == 10:
                 print_stats(stats, total)
+                count = 0
     except KeyboardInterrupt:
         print_stats(stats, total)
         raise
