@@ -9,4 +9,6 @@ def rotate_2d_matrix(matrix):
     Args:
         matrix (list): 2D matrix to rotate
     """
-    matrix[:] = zip(*matrix[::-1])
+    reversed_matrix = zip(*matrix[::-1])
+    for i, j in enumerate(reversed_matrix):
+        matrix[i] = list(j)
