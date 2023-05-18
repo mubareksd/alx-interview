@@ -4,7 +4,8 @@
 
 
 def makeChange(coins, total):
-    """makeChange function that determines the fewest number of coins needed to meet a given amount total.
+    """makeChange function that determines the fewest
+    number of coins needed to meet a given amount total.
 
     Args:
         coins (list): list of the values of the coins in your possession
