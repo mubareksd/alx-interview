@@ -29,11 +29,11 @@ def primes(n):
     Returns:
         list: list of prime numbers
     """
-    lss = []
-    for i in range(n):
-        if isPrime(i):
-            lss.append(i)
-    return lss
+    prime = []
+    for i in range(1, n + 1):
+        if isPrime(i) and i ** 2 not in prime:
+            prime.append(i)
+    return prime
 
 
 def isWinner(x, nums):
@@ -46,15 +46,12 @@ def isWinner(x, nums):
     Returns:
         str: name of the player that won the most rounds
     """
-    if x < 1 or nums is None or len(nums) < 1:
+    if x is None or nums is None or x == 0 or nums == []:
         return None
-    ben = 0
-    maria = 0
+    maria, ben = 0, 0
     for i in range(x):
-
-        if primes(nums[i]) == []:
-            ben += 1
-        elif len(primes(nums[i])) % 2 == 0:
+        prime = primes(nums[i])
+        if len(prime) % 2 == 0:
             ben += 1
         else:
             maria += 1
