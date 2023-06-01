@@ -8,10 +8,10 @@ def isWinner(x, nums):
 
     Args:
         x (int): number of rounds
-        nums (list[int]): 
+        nums (list[int]): array of n
 
     Returns:
-        _type_: _description_
+        str: name of the player that won the most rounds
     """
     maria, ben = 0, 0
     if not nums or x < 1:
@@ -23,10 +23,8 @@ def isWinner(x, nums):
             ben += 1
 
     if maria > ben:
-        print(maria)
         return 'Maria'
     elif ben > maria:
-        print(ben)
         return 'Ben'
     else:
         return None
