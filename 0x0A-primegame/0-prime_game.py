@@ -19,12 +19,12 @@ def isWinner(x, nums):
     for i in range(x):
         if nums[i] % 2 == 0:
             maria += 1
-        if nums[i] % 2 != 0:
-            ben += 1
+            continue
+        ben += 1
 
     if maria > ben:
         return 'Maria'
-    elif ben > maria:
+    if ben > maria:
         return 'Ben'
-    else:
-        return None
+
+    return None
